@@ -8,15 +8,8 @@ export type Field = {
 
 export type Amount = `${number}.${number}`
 
-export type Key =
-  | `${string}@${string}.${string}` // Email
-  | `${string}-${string}-${string}-${string}-${string}` // Chave aleatória
-  | `${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}` // CPF
-  | `+${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}` // Telefone
-  | `${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}${number}` // CNPJ
-
 export type Params = {
-  key: Key
+  key: string
   amount?: Amount
   name: string
   city: string
@@ -49,13 +42,13 @@ const MERCHANT_CITY = (city: string): Field => ({
 
 const MERCHANT_ACCOUNT_INFORMATION__GUI: Field = { id: '00', size: '14', value: 'br.gov.bcb.pix' }
 
-const MERCHANT_ACCOUNT_INFORMATION__KEY = (key: Key): Field => ({
+const MERCHANT_ACCOUNT_INFORMATION__KEY = (key: string): Field => ({
   id: '01',
   size: `${key.length}`,
   value: key
 })
 
-const MERCHANT_ACCOUNT_INFORMATION = (key: Key) => ({
+const MERCHANT_ACCOUNT_INFORMATION = (key: string) => ({
   id: '26',
   size: '',
   value: [MERCHANT_ACCOUNT_INFORMATION__GUI, MERCHANT_ACCOUNT_INFORMATION__KEY(key)]
