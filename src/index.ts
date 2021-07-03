@@ -6,11 +6,9 @@ export type Field = {
   value: string | Field[]
 }
 
-export type Amount = `${number}.${number}`
-
 export type Params = {
   key: string
-  amount?: Amount
+  amount?: string
   name: string
   city: string
   reusable?: boolean
@@ -54,7 +52,7 @@ const MERCHANT_ACCOUNT_INFORMATION = (key: string) => ({
   value: [MERCHANT_ACCOUNT_INFORMATION__GUI, MERCHANT_ACCOUNT_INFORMATION__KEY(key)]
 })
 
-const TRANSACTION_AMOUNT = (amount: Amount = '00.00') => ({
+const TRANSACTION_AMOUNT = (amount: string = '00.00') => ({
   id: '54',
   size: `${amount.length}`,
   value: amount
