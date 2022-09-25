@@ -1,7 +1,7 @@
 // Extracted from https://github.com/NascentSecureTech/pix-qrcode-utils/blob/master/packages/emv-merchant-qrcode/src/crc.ts
 
-export function computeCRC (str: string, invert: boolean = false): string {
-  const bytes = new TextEncoder().encode(str)
+export function computeCRC(str: string, invert: boolean = false): string {
+  const bytes = new TextEncoder().encode(str);
 
   const crcTable = [
     0x0000,
@@ -259,23 +259,23 @@ export function computeCRC (str: string, invert: boolean = false): string {
     0x2e93,
     0x3eb2,
     0x0ed1,
-    0x1ef0
-  ]
+    0x1ef0,
+  ];
 
-  let crc = 0xffff
+  let crc = 0xffff;
 
   for (let i = 0; i < bytes.length; i++) {
-    const c = bytes[i]
-    const j = (c! ^ (crc >> 8)) & 0xff
+    const c = bytes[i];
+    const j = (c! ^ (crc >> 8)) & 0xff;
 
-    crc = crcTable[j]! ^ (crc << 8)
+    crc = crcTable[j]! ^ (crc << 8);
   }
 
-  const answer = (crc ^ 0) & 0xffff
+  const answer = (crc ^ 0) & 0xffff;
 
-  const hex = answer.toString(16).padStart(4, '0').toUpperCase()
+  const hex = answer.toString(16).padStart(4, "0").toUpperCase();
 
-  if (invert) return hex.slice(2) + hex.slice(0, 2)
+  if (invert) return hex.slice(2) + hex.slice(0, 2);
 
-  return hex
+  return hex;
 }
