@@ -1,6 +1,6 @@
 {
   "name": "pix-me",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Gerador de códigos de pagamento do Pix",
   "main": "dist/mod.js",
   "scripts": {
