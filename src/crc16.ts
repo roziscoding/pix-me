@@ -1,5 +1,11 @@
 // Extracted from https://github.com/NascentSecureTech/pix-qrcode-utils/blob/master/packages/emv-merchant-qrcode/src/crc.ts
 
+/**
+ * Calculates the CRC for a string
+ * @param str String to calculate the CRC for
+ * @param invert If the CRC should be inverted
+ * @returns The CRC for the string
+ */
 export function computeCRC(str: string, invert: boolean = false): string {
   const bytes = new TextEncoder().encode(str);
 

@@ -1,17 +1,38 @@
 import { computeCRC } from "./crc16.ts";
 
-export type Field = {
+export interface Field {
+  /**
+   * Numeric id of the field
+   */
   id: string;
+  /**
+   * Total field size
+   */
   size: string;
+  /**
+   * Value of the field
+   */
   value: string | Field[];
-};
+}
 
-export type Params = {
+export interface Params {
+  /**
+   * Pix key
+   */
   key: string;
+  /**
+   * Amount to be transfered
+   */
   amount?: string;
+  /**
+   * Receiver name
+   */
   name: string;
+  /**
+   * Receiver city
+   */
   city: string;
-};
+}
 
 const CRC16 = { id: "63", size: "04", value: "" };
 const PAYLOAD_FORMAT_INDICATOR: Field = { id: "00", size: "02", value: "01" };
@@ -78,15 +99,12 @@ function fieldToString(field: Field): string {
  * Generates a PIX code to be used in transferences.
  *
  * **Some banks do not allow special characters in the PIX code.
- * Make sure you remove such carachters before calling this function**
+ * Make sure you remove such characters from all fields before calling this function**
  * @param params Transference information
- * @param params.key Pix key
- * @param params.amount Amount to be transfered
- * @param params.name Receiver name
- * @param params.city Receiver city
  * @returns
  */
-export function pix({ key, amount, name, city }: Params) {
+export function pix(params: Params) {
+  const { key, amount, name, city } = params;
   const fields: Field[] = [
     PAYLOAD_FORMAT_INDICATOR,
     MERCHANT_ACCOUNT_INFORMATION(key),
