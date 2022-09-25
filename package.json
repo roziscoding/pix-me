@@ -2,14 +2,9 @@
   "name": "pix-me",
   "version": "2.0.0",
   "description": "Gerador de códigos de pagamento do Pix",
-  "main": "dist/index.js",
+  "main": "dist/mod.js",
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "tsc",
-    "build:clean": "npm run clean && npm run build",
-    "test": "npm run build:clean && mocha",
-    "prepack": "npm run build:clean",
-    "lint": "eslint ."
+    "prepack": "deno task backport"
   },
   "repository": {
     "type": "git",

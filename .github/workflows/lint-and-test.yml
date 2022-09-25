@@ -11,25 +11,24 @@ jobs:
     steps:
       - name: Chekout code
         uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 15.x
-      - run: npm ci
-      - run: npm run lint
-  test:
+      - name: Use Deno
+        uses: denoland/setup-deno@v1
+      - run: deno fmt --check
+  check:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x, 15.x, 16.x]
+    steps:
+      - name: Chekout code
+        uses: actions/checkout@v2
+      - name: Use Deno
+        uses: denoland/setup-deno@v1
+      - run: deno check src/mod.ts
+  test:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test
+      - name: Use Deno
+        uses: denoland/setup-deno@v1
+      - run: deno test
