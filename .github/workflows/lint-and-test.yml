@@ -14,6 +14,14 @@ jobs:
       - name: Use Deno
         uses: denoland/setup-deno@v1
       - run: deno fmt --check
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Chekout code
+        uses: actions/checkout@v2
+      - name: Use Deno
+        uses: denoland/setup-deno@v1
       - run: deno check src/mod.ts
   test:
     runs-on: ubuntu-latest
