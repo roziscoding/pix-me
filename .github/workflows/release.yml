@@ -16,6 +16,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
+      - name: Install devDependencies
+        run: npm i
       - name: Setup Deno
         uses: denoland/setup-deno@v1
       - name: Release
