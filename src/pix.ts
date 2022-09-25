@@ -18,7 +18,7 @@ interface Field {
 /**
  * Params to encode in the pix string
  *
- * **Note that some banks don't support speccial characters
+ * **Note that some banks don't support special characters in pix codes;
  * make sure to strip those from all fields before encoding them**
  */
 export interface Params {
