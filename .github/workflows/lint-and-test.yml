@@ -14,7 +14,7 @@ jobs:
       - name: Use Deno
         uses: denoland/setup-deno@v1
       - run: deno fmt --check
-      - run: deno check mod.ts
+      - run: deno check src/mod.ts
   test:
     runs-on: ubuntu-latest
 
