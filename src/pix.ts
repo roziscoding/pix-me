@@ -1,6 +1,6 @@
 import { computeCRC } from "./crc16.ts";
 
-export interface Field {
+interface Field {
   /**
    * Numeric id of the field
    */
@@ -15,6 +15,9 @@ export interface Field {
   value: string | Field[];
 }
 
+/**
+ * Params to encode in the pix string
+ */
 export interface Params {
   /**
    * Pix key
